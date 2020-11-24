@@ -1,3 +1,4 @@
+package assign2package;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -117,7 +118,7 @@ public class DBQueries {
 			s = conn.prepareStatement("update " + tableName + " set TOT_REQ = ? where SID = ?");
 			s.setInt(1, clientTotReq);
 			s.setInt(2, clientID);
-			int count = s.executeUpdate();
+			s.executeUpdate();
 			s.close();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
