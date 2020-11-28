@@ -1,4 +1,6 @@
 package assign2package;
+
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,7 +26,7 @@ public class DBQueries {
 	// Name of connection variable
 	private Connection conn = null;
 
-	// Strign used to tell if the database connected or not
+	// String used to tell if the database connected or not
 	String ConnectedOrNot;
 	// Setting clientID of the user who logged in
 	public static int clientID;
@@ -38,7 +40,7 @@ public class DBQueries {
 	// Throws Exception if error
 	public Connection getConnection() throws SQLException {
 		Properties connectionProps = new Properties();
-		// Database username and password
+		// Database user name and password
 		connectionProps.put("user", this.userName);
 		connectionProps.put("password", this.password);
 
@@ -79,13 +81,13 @@ public class DBQueries {
 		}
 	}
 
-	// Used to validate the username(FNAME) and password(STUD_ID) is within the
+	// Used to validate the user name(FNAME) and password(STUD_ID) is within the
 	// database
 	public boolean login(String uName, String pWord) {
 		try {
 			Connection conn = getConnection();
 			PreparedStatement s;
-			// Selects the user where it mataches the username(FNAME) and password(STUD_ID)
+			// Selects the user where it matches the user name(FNAME) and password(STUD_ID)
 			s = conn.prepareStatement(
 					"select * from " + tableName + " where FNAME ='" + uName + "' and STUD_ID='" + pWord + "'");
 			// Adds results to ResultSet rs
@@ -124,5 +126,4 @@ public class DBQueries {
 			ex.printStackTrace();
 		}
 	}
-
 }

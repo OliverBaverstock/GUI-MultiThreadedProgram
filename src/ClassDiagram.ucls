@@ -1,105 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="ServerLogIn.Listener" project="Assign2_OliverBaverstock" 
-    file="/Assign2_OliverBaverstock/src/ServerLogIn.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="862" y="577"/>    
+  <class id="1" language="java" name="assign2package.NewClient.Listener" project="Assign2_OliverBaverstock" 
+    file="/Assign2_OliverBaverstock/src/assign2package/NewClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="179" y="495"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="Server.myClient" project="Assign2_OliverBaverstock" 
-    file="/Assign2_OliverBaverstock/src/Server.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="348" y="423"/>    
+  <class id="2" language="java" name="assign2package.NewClient" project="Assign2_OliverBaverstock" 
+    file="/Assign2_OliverBaverstock/src/assign2package/NewClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="178" y="201"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="Client" project="Assign2_OliverBaverstock" 
-    file="/Assign2_OliverBaverstock/src/Client.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="99" y="111"/>    
+  <class id="3" language="java" name="assign2package.Server.myClient" project="Assign2_OliverBaverstock" 
+    file="/Assign2_OliverBaverstock/src/assign2package/Server.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="533" y="433"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="Client.Listener" project="Assign2_OliverBaverstock" 
-    file="/Assign2_OliverBaverstock/src/Client.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="114" y="369"/>    
+  <class id="4" language="java" name="assign2package.Server" project="Assign2_OliverBaverstock" 
+    file="/Assign2_OliverBaverstock/src/assign2package/Server.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="532" y="107"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="DBQueries" project="Assign2_OliverBaverstock" 
-    file="/Assign2_OliverBaverstock/src/DBQueries.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="991" y="231"/>    
+  <class id="5" language="java" name="assign2package.DBQueries" project="Assign2_OliverBaverstock" 
+    file="/Assign2_OliverBaverstock/src/assign2package/DBQueries.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="895" y="422"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="Server" project="Assign2_OliverBaverstock" 
-    file="/Assign2_OliverBaverstock/src/Server.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="651" y="136"/>    
+  <class id="6" language="java" name="assign2package.TestCases.LoginTests" project="Assign2_OliverBaverstock" 
+    file="/Assign2_OliverBaverstock/src/assign2package/TestCases/LoginTests.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="893" y="56"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="ServerLogIn" project="Assign2_OliverBaverstock" 
-    file="/Assign2_OliverBaverstock/src/ServerLogIn.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="588" y="432"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <association id="8">    
+  <association id="7">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="9" name="serverlogin"/>      
-      <multiplicity id="10" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="11">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
-  </nesting>  
-  <association id="12">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="13" name="dbqueries"/>      
-      <multiplicity id="14" minimum="0" maximum="1"/>    
+      <attribute id="8" name="dbqueries"/>      
+      <multiplicity id="9" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="15">    
-    <end type="SOURCE" refId="7"/>    
+  <nesting id="10">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </nesting>  
+  <association id="11">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="12" name="dbqueries"/>      
+      <multiplicity id="13" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="14">    
+    <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="1"/>  
   </nesting>  
-  <nesting id="16">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="2"/>  
-  </nesting>  
-  <association id="17">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="18" name="dbqueries"/>      
-      <multiplicity id="19" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

@@ -1,27 +1,76 @@
 package assign2package;
+
+
+
 import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
-import javax.swing.JOptionPane;
 
-public class Server {
-	// Main function to start app
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
+
+@SuppressWarnings("serial")
+public class Server extends JFrame {
+	
+	///////// Variables used for server Frame ////////////
+
+	private JPanel contentPane;
+	public JTextArea jta;
+	
+	///////// Variables for data streams ////////////
+
+	@SuppressWarnings("unused")
+	private DataOutputStream toServer;
+	@SuppressWarnings("unused")
+	private DataInputStream fromServer;
+	
+	//////// Creating DBQueries object ////////////
+
+	DBQueries dbqueries = new DBQueries();
+
+	// Main function to start server
 	public static void main(String[] args) {
 		new Server();
 	}
 
-	// Creating ServerLogIn object
-	ServerLogIn serverlogin = new ServerLogIn();
-	// Creating DBQueries object
-	DBQueries dbqueries = new DBQueries();
-
-	// Creating variables for hostname and ipaddress
+	// Creating variables for host name and IP
 	private String hostname;
 	private InetAddress ipAddress;
 
 	public Server() {
+
+		setTitle("Server");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 460, 320);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 460, 298);
+		contentPane.add(panel);
+		panel.setLayout(null);
+
+		JLabel lblServerLog = new JLabel("Server Log:");
+		lblServerLog.setBounds(16, 6, 75, 16);
+		panel.add(lblServerLog);
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(16, 27, 427, 265);
+		panel.add(scrollPane);
+
+		jta = new JTextArea();
+		jta.setEditable(false);
+		scrollPane.setViewportView(jta);
+
+		setVisible(true);
 
 		try {
 			// Create a server socket
@@ -31,22 +80,14 @@ public class Server {
 				// Sleep .5 seconds before continuing
 				Thread.sleep(500);
 			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			// Print server start time to text area
-			serverlogin.jta.append("Server started at " + new Date() + '\n');
-			try {
-				// Calls function to connect to Login to the Server
-				serverlogin.connectToServer();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			jta.append("Server started at " + new Date() + '\n');
 			// Connects to the DB
 			dbqueries.run();
-			// Writes succesful or unsucessful connection
-			serverlogin.jta.append(dbqueries.ConnectedOrNot + '\n');
+			// Writes successful or unsuccessful connection
+			jta.append(dbqueries.ConnectedOrNot + '\n');
 			while (true) {
 				Socket socket = serverSocket.accept();
 				myClient c = new myClient(socket);
@@ -80,7 +121,7 @@ public class Server {
 					// Reads the input
 					input = inputFromClient.readUTF();
 
-					// Sets the ipaddress and hostname
+					// Sets the IP and host name
 					ipAddress = InetAddress.getLocalHost();
 					hostname = ipAddress.getHostName();
 					String ip = ipAddress.getHostAddress();
@@ -90,14 +131,25 @@ public class Server {
 						username = inputFromClient.readUTF();
 						password = inputFromClient.readUTF();
 						if (dbqueries.login(username, password) == true) {
+							String fname = DBQueries.clientFName;
+							String sname = DBQueries.clientSName;
+							int tot_req = DBQueries.clientTotReq;
+							// Print who connected to the server
+							jta.append(fname + " " + sname + " has connected to the server succesfully\n");
+							outputToClient.writeUTF("Success");
+							// Return the first and last name for welcome messages and number of logins
+							outputToClient.writeUTF(fname);
+							outputToClient.flush();
+							outputToClient.writeUTF(sname);
+							outputToClient.flush();
+							outputToClient.writeInt(tot_req);
+							outputToClient.flush();
+							outputToClient.writeInt(DBQueries.clientID);
 
-							@SuppressWarnings("unused")
-							Client client = new Client();
 						}
 						// Prints this box if the login is unsuccessful
 						else {
-							JOptionPane.showMessageDialog(null,
-									"Record Not Found \nPlease enter a valid Username and Password");
+							outputToClient.writeUTF("UnSuccessful");
 						}
 					}
 
@@ -109,13 +161,13 @@ public class Server {
 						double radius = inputFromClient.readDouble();
 
 						// Prints a String showing recieved values to the text area
-						serverlogin.jta.append("Request recieved from Hostname: " + clientHostname + " with IPAddress: "
-								+ clientIP + "\nRadius recieved: " + radius + "\n");
+						jta.append("Request recieved from Hostname: " + clientHostname + " with IPAddress: " + clientIP
+								+ "\nRadius recieved: " + radius + "\n");
 
 						// Calculates area of a circle
 						double area = radius * radius * Math.PI;
 						// Prints the area found to the text area
-						serverlogin.jta.append("Area found:" + area + '\n');
+						jta.append("Area found:" + area + '\n');
 						// Returns the server hostname, ipaddress and area found
 						outputToClient.writeUTF(hostname);
 						outputToClient.flush();
@@ -125,25 +177,15 @@ public class Server {
 						outputToClient.flush();
 
 					}
+					
+					//Exit message if a user exits
+					if (input.equals("Exit")) {
+						// Takes in client hostname, ipaddress and radius
+						String fname = inputFromClient.readUTF();
+						String lname = inputFromClient.readUTF();
 
-					// If input is welcome run this if statement
-					if (input.equals("Welcome")) {
-						// Sets variables to the client first and last name to welcome them and total
-						// requests
-						String fname = DBQueries.clientFName;
-						String sname = DBQueries.clientSName;
-						int tot_req = DBQueries.clientTotReq;
-
-						// Print who connected to the server
-						serverlogin.jta.append(fname + " " + sname + " has connected to the server succesfully\n");
-
-						// Return the first and last name for welcome messages and number of logins
-						outputToClient.writeUTF(fname);
-						outputToClient.flush();
-						outputToClient.writeUTF(sname);
-						outputToClient.flush();
-						outputToClient.writeInt(tot_req);
-						outputToClient.flush();
+						// Prints a String showing recieved values to the text area
+						jta.append(fname + " " + lname + " has disconnected from the server\n");
 					}
 				}
 			} catch (Exception e) {
@@ -158,4 +200,4 @@ public class Server {
 			outputToClient = new DataOutputStream(socket.getOutputStream());
 		}
 	}
-}// End Server Construct}
+}
