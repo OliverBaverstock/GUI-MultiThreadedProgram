@@ -83,7 +83,7 @@ public class DBQueries {
 
 	// Used to validate the user name(FNAME) and password(STUD_ID) is within the
 	// database
-	public boolean login(String uName, String pWord) {
+	public boolean login(String uName, String pWord) {	
 		try {
 			Connection conn = getConnection();
 			PreparedStatement s;
